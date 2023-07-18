@@ -1,0 +1,10 @@
+near call dev-1689435532140-65145215546570 createShop '{"description": "day la shop cua toi", "name": "shop ban sach"}' --accountId laffy.testnet
+near call dev-1689435532140-65145215546570 getAllShops '{}' --accountId laffy.testnet
+near call dev-1689435532140-65145215546570 createProduct '{"attributes":{"Author":"J.K. Rowling","Year":"1997","Pages":"223","Language":"English","Publisher":"Bloomsbury Publishing","ISBN-10":"0747532699","ISBN-13":"978-0747532699"},"description":"Harry Potter and the Philosophers Stone is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowlings debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.","image":"https://images-na.ssl-images-amazon.com/images/I/51UoqRAxwEL._SX331_BO1,204,203,200_.jpg","price":10,"shopId":"0","stock":10,"title":"Harry Potter and the Philosophers Stone"}' --accountId laffy.testnet
+near view dev-1689435532140-65145215546570 getProducts '{}' --accountId laffy.testnet
+near call dev-1689435532140-65145215546570 getProductDetails '{"id": "0"}' --accountId laffy.testnet
+near call dev-1689435532140-65145215546570 getShopProducts '{"id": "0"}' --accountId laffy.testnet
+near call dev-1689435532140-65145215546570 getAllShops '{}' --accountId laffy.testnet
+#1000000000000000000000000  = 1  =>  25 = 0.000000000000000000000025 => x = x*10^(-25)
+near call dev-1689435532140-65145215546570 buyProduct '{"id": "25", "quantity": "1"}' --accountId hoagxxll.testnet --amount 0.000000000000000000000025
+near view dev-1689435532140-65145215546570 getProductsByUser '{"accountId": "hoagxxll.testnet"}'
