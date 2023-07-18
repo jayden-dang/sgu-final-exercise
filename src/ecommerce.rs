@@ -101,7 +101,7 @@
       self.products.get(&product_id)
     }
 
-
+    #[payable]
     fn payment(&mut self, product_id: String)-> Promise {
       let product = self.products.get(&product_id).unwrap();
       let price = product.price;
