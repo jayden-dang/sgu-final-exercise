@@ -22,6 +22,27 @@ class EcommerceContract {
         this.productsPerUser = new LookupMap<UnorderedSet<IOrder>>("productsPerUser");
         this.productsPerShop = new LookupMap<UnorderedSet<string>>("productsPerShop");
     }
+    @call({})
+    updateProduct({ attributes, description, image, price, stock, title, id }: IProduct): void {
+        const shopId = this.shopsPerUser.get(signerAccountId());
+        assert(shopId != null, "Bạn chưa có cửa hàng");
+        const oldProduct = this.products.get(id);
+        assert(oldProduct != null, "Sản phẩm không tồn tại");
+
+        assert(oldProduct.shopId == shopId, "Bạn không có quyền chỉnh sửa sản phẩm này");
+        const product: IProduct = {
+            attributes,
+            description,
+            id,
+            image,
+            price,
+            shopId,
+            stock,
+            title,
+        };
+        this.products.set(product.id, product);
+    }
+
     // tạo cửa hàng mới
     @call({})
     createShop({ description, name }: Pick<IShop, "description" | "name">) {
