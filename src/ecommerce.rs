@@ -57,7 +57,7 @@ impl ImplementECommerce for Contract {
     let mut product = self.products.get(&product_id).expect("Product does not exist");
     assert!(product.total_supply > 0, "Product out of stock");
     let price = product.price * amount as u128;
-    assert!(price == env::attached_deposit(), "Not equal the price");
+    assert!(price <= env::attached_deposit(), "Not equal the price");
 
     product.total_supply -= amount;
     self.products.insert(&product_id, &product);
