@@ -1,0 +1,21 @@
+{
+    "name": "ecommerce-smart-contract",
+    "version": "1.0.0",
+    "license": "(MIT AND Apache-2.0)",
+    "type": "module",
+    "scripts": {
+        "build": "./build.sh",
+        "deploy": "./deploy.sh",
+        "test": "echo use integration-tests"
+    },
+    "dependencies": {
+        "near-sdk-js": "^1.0.0",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "@types/uuid": "^9.0.2",
+        "ts-morph": "^19.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.1.6"
+    }
+}
