@@ -69,9 +69,16 @@
       image: Option<String>) -> Option<Product>{
         let exist_product = self.products.get(&product_id);
         if exist_product.is_none() {
+          //Them product vao danh sach
           let product = Product {product_id, title, price, description, quantity, image};
           self.products.insert(&product.product_id, &product);
-          self.shops.get(&shop_id).unwrap().products.insert(product.product_id.clone());
+
+          //Them id prduct vao shop
+          let mut shop = self.shops.get(&shop_id).unwrap();
+          shop.products.insert(product.product_id.clone());
+          self.shops.insert(&shop_id, &shop);
+          
+          //return
           return Some(product);
         }       
         return None;
@@ -90,7 +97,7 @@
     fn view_all_products_per_shop(&self, shop_id: String) -> Vec<Product>{
       let mut all_products_per_shop = Vec::new();
       let exist_shop = self.shops.get(&shop_id);
-      for i in exist_shop.unwrap().products.iter() {
+      for i in exist_shop.unwrap().products {
         all_products_per_shop.push(self.products.get(&i).unwrap());
       }
       all_products_per_shop
